@@ -1,3 +1,4 @@
+import axios from "axios";
 export const UPDATE_FORM = "UPDATE_FORM";
 export const FETCH_POSTS_FAILURE = "FETCH_POSTS_FAILURE";
 export const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST";
@@ -23,19 +24,16 @@ export const fetchPostsFailure = (error) => ({
 export const updatePosts = (posts) => async (dispatch) => {
   dispatch(fetchPostsRequest());
   try {
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify({
+    const { data } = await axios({
+      method: "post",
+      url: "https://jsonplaceholder.typicode.com/posts",
+      data: {
         title: posts.title,
         message: posts.message,
         userId: 1,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
       },
-    })
-      .then((response) => response.json())
-      .then((json) => dispatch(fetchPostsSuccess(json)));
+    });
+    await dispatch(fetchPostsSuccess(data));
   } catch ({ message }) {
     dispatch(fetchPostsFailure(message));
   }
