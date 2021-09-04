@@ -6,8 +6,11 @@ Would you rather is a web app that let's a user play the game Would you Rather?.
 
 ### Installation
 
-Step 1: Clone the project `https://github.com/Godswilldev/Would_You_Rather.git`
-Step 2: Install all project dependencies (via npm/yarn) `npm install` or `yarn install`
-Step 3: Start the development server `npm start` or `yarn start`
+Step 1: Clone the project `https://github.com/Godswilldev/Would_You_Rather.git` <br />
+
+Step 2: Install all project dependencies (via npm/yarn) `npm install` or `yarn install` <br />
+
+Step 3: Start the development server `npm start` or `yarn start` <br />
+
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
