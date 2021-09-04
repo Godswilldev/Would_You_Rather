@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div>
       <h1>
-        Navbar {title} {body} {body}
+        Navbar {title} {body}
       </h1>
     </div>
   );

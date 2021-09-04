@@ -27,7 +27,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>
+      <div>
         Welcome
         {loading ? (
           <h1>Loading...</h1>
@@ -36,7 +36,7 @@ const Form = () => {
             {name} {msg}
           </h2>
         )}
-      </h2>
+      </div>
       <input
         type="text"
         name="title"
