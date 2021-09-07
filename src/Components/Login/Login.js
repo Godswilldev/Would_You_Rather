@@ -1,9 +1,10 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({ logIn }) => {
   return (
     <div>
       <h3>Hello from the Login view</h3>
+      <button onClick={() => logIn()}>Log In</button>
     </div>
   );
 };
