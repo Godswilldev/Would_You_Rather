@@ -10,7 +10,7 @@ export const getUsers = (users) => ({
 export const getInitialUsers = () => async (dispatch) => {
   try {
     const users = await _getUsers();
-    dispatch(getUsers(users));
+    await dispatch(getUsers(users));
   } catch (error) {
     console.log(`Error from getInitialUsers ${error}`);
   }
