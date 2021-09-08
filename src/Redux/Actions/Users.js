@@ -1,4 +1,5 @@
 import { _getUsers } from "../../utils/_Data";
+
 export const GET_USERS = "GET_USERS";
 
 export const getUsers = (users) => ({
