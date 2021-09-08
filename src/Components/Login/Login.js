@@ -15,7 +15,6 @@ const Login = () => {
       dispatch(authedUser(authUser));
       history.push("/dashboard", authUser);
     }
-    console.log(history);
   };
 
   return (
