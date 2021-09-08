@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./Login/Login";
 import Dashboard from "./Dashboard/Dashboard";
 import Four0Four from "./FourZeroFour/Four0Four";
@@ -7,13 +7,19 @@ import Nav from "./Nav/Nav";
 import NewQuestion from "./NewQuestion/NewQuestion";
 import Question from "./Question/Question";
 import { Route, Switch, useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { handleInitialData } from "../Redux/Shared/Shared";
 
 const App = () => {
+  const history = useHistory();
   const [loggedIn, setLoggedIn] = useState(false);
   const logOut = () => setLoggedIn(false);
   const logIn = () => setLoggedIn(true);
-  const history = useHistory();
-  console.log(history);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleInitialData());
+  }, [dispatch]);
 
   return (
     <div>
@@ -28,7 +34,6 @@ const App = () => {
         <Route exact path="/question/:unqId" component={Question} />
         <Route exact component={Four0Four} />
       </Switch>
-      {/* <button onClick={() => setLoggedIn(true)}>Click me</button> */}
     </div>
   );
 };
