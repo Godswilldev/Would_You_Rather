@@ -4,6 +4,7 @@ import QuestionListItem from "./QuestionListItem/QuestionListItem";
 
 const Dashboard = () => {
   const [showAnswered, setShowAnswered] = useState(false);
+
   const loggedInUser = useSelector(
     ({ authedUserReducer }) => authedUserReducer
   );
@@ -16,11 +17,10 @@ const Dashboard = () => {
   const answered = Object.values(questions)
     .filter((question) => loggedInUserAnsweredQuestion.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
+
   const unanswered = Object.values(questions)
     .filter((question) => !loggedInUserAnsweredQuestion.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
-
-  console.log(answered, unanswered);
 
   return (
     <div style={{ margin: "3rem" }}>

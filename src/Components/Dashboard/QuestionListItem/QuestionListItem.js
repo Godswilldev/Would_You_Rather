@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 const QuestionListItem = ({ id, author, optionOne, optionTwo }) => {
   const users = useSelector(({ usersReducer }) => usersReducer);
-  console.log(users);
+
   const username = Object.values(users).find((user) => user.id === author);
-  console.log(username);
 
   return (
     <div
