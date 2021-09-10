@@ -20,7 +20,7 @@ const Dashboard = () => {
     .filter((question) => !loggedInUserAnsweredQuestion.includes(question.id))
     .sort((a, b) => b.timestamp - a.timestamp);
 
-  console.log(answered, " ", unanswered);
+  console.log(answered, unanswered);
 
   return (
     <div style={{ margin: "3rem" }}>
@@ -36,10 +36,29 @@ const Dashboard = () => {
       {showAnswered ? (
         <div className="answered">
           <h2>Answered Questions go here</h2>
+          {answered.map((answer) => (
+            <div key={answer.id}>
+              <QuestionListItem
+                author={answer.author}
+                id={answer.id}
+                optionOne={answer.optionOne}
+                optionTwo={answer.optionTwo}
+              />
+            </div>
+          ))}
         </div>
       ) : (
         <div className="unanswered">
-          <QuestionListItem />
+          {unanswered.map((answer) => (
+            <div key={answer.id}>
+              <QuestionListItem
+                author={answer.author}
+                id={answer.id}
+                optionOne={answer.optionOne}
+                optionTwo={answer.optionTwo}
+              />
+            </div>
+          ))}
         </div>
       )}
     </div>

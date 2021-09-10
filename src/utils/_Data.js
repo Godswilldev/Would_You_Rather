@@ -2,7 +2,8 @@ let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
-    avatarURL: "",
+    avatarURL:
+      "https://media-exp1.licdn.com/dms/image/C4D03AQHI4OlnYc9zQg/profile-displayphoto-shrink_200_200/0/1579226634129?e=1635984000&v=beta&t=SuAqLZn1Yi3eKAGxqkfsQdzX7BJeRLXRLPqK00vU02w",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -14,7 +15,8 @@ let users = {
   tylermcginnis: {
     id: "tylermcginnis",
     name: "Tyler McGinnis",
-    avatarURL: "",
+    avatarURL:
+      "https://www.udacity.com/www-proxy/contentful/assets/2y9b3o528xhq/7Ji5LgtjJSfy9qazVZCZi6/ddbf1ee08380318fe4b28c193c930f91/tyler-mcginnis.jpg",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo",
@@ -24,7 +26,8 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "",
+    avatarURL:
+      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZwLxd4xBwQJeHqDDT0U2Or-IXKCokgUqX1UeE27Vr9w5EUnaj",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
