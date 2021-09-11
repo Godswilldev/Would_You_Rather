@@ -1,9 +1,10 @@
 import React from "react";
+import LeaderCard from "./LeaderCard/LeaderCard";
 
 const LeaderBoard = () => {
   return (
     <div>
-      <h3>Hello from the leaderboard view</h3>
+      <LeaderCard />
     </div>
   );
 };
