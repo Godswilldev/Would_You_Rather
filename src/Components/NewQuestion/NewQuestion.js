@@ -14,6 +14,7 @@ const NewQuestion = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+    setAddedQuestion(true);
     dispatch(
       handleAddQuestion({
         optionOneText: optionOne,
@@ -21,7 +22,6 @@ const NewQuestion = () => {
         author: authedUserReducer,
       })
     );
-    setAddedQuestion(true);
     resetOptionOne();
     resetOptionTwo();
     setAddedQuestion(false);
