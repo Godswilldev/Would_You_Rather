@@ -24,6 +24,7 @@ const NewQuestion = () => {
     setAddedQuestion(true);
     resetOptionOne();
     resetOptionTwo();
+    setAddedQuestion(false);
   };
 
   return (
