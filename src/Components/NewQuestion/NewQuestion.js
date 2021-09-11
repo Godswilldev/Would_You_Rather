@@ -1,18 +1,28 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import useInputState from "../../hooks/useInputState";
 import { handleAddQuestion } from "../../Redux/Actions/NewQuestion";
 
 const NewQuestion = () => {
+  const authedUserReducer = useSelector(
+    ({ authedUserReducer }) => authedUserReducer
+  );
   const [optionOne, setOptionOne, resetOptionOne] = useInputState("");
   const [optionTwo, setOptionTwo, resetOptionTwo] = useInputState("");
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatch(
+      handleAddQuestion({
+        optionOneText: optionOne,
+        optionTwoText: optionTwo,
+        author: authedUserReducer,
+      })
+    );
+
     history.push("/dashboard");
     resetOptionOne();
     resetOptionTwo();

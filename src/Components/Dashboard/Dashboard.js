@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import QuestionListItem from "./QuestionListItem/QuestionListItem";
 
 const Dashboard = () => {
@@ -14,52 +15,62 @@ const Dashboard = () => {
   const loggedInUserAnsweredQuestion =
     loggedInUser && Object.keys(users[loggedInUser].answers);
 
-  const answered = Object.values(questions)
-    .filter((question) => loggedInUserAnsweredQuestion.includes(question.id))
-    .sort((a, b) => b.timestamp - a.timestamp);
+  const answered =
+    loggedInUser &&
+    Object.values(questions)
+      .filter((question) => loggedInUserAnsweredQuestion.includes(question.id))
+      .sort((a, b) => b.timestamp - a.timestamp);
 
-  const unanswered = Object.values(questions)
-    .filter((question) => !loggedInUserAnsweredQuestion.includes(question.id))
-    .sort((a, b) => b.timestamp - a.timestamp);
+  const unanswered =
+    loggedInUser &&
+    Object.values(questions)
+      .filter((question) => !loggedInUserAnsweredQuestion.includes(question.id))
+      .sort((a, b) => b.timestamp - a.timestamp);
 
   return (
     <div style={{ margin: "3rem" }}>
-      <div>
-        <button onClick={() => setShowAnswered(false)}>
-          Unanswered Questions
-        </button>
-        <button onClick={() => setShowAnswered(true)}>
-          Answered Questions
-        </button>
-      </div>
+      {loggedInUser ? (
+        <div>
+          <div>
+            <button onClick={() => setShowAnswered(false)}>
+              Unanswered Questions
+            </button>
+            <button onClick={() => setShowAnswered(true)}>
+              Answered Questions
+            </button>
+          </div>
 
-      {showAnswered ? (
-        <div className="answered">
-          <h2>Answered Questions go here</h2>
-          {answered.map((answer) => (
-            <div key={answer.id}>
-              <QuestionListItem
-                author={answer.author}
-                id={answer.id}
-                optionOne={answer.optionOne}
-                optionTwo={answer.optionTwo}
-              />
+          {showAnswered ? (
+            <div className="answered">
+              <h2>Answered Questions go here</h2>
+              {answered.map((answer) => (
+                <div key={answer.id}>
+                  <QuestionListItem
+                    author={answer.author}
+                    id={answer.id}
+                    optionOne={answer.optionOne}
+                    optionTwo={answer.optionTwo}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <div className="unanswered">
+              {unanswered.map((answer) => (
+                <div key={answer.id}>
+                  <QuestionListItem
+                    author={answer.author}
+                    id={answer.id}
+                    optionOne={answer.optionOne}
+                    optionTwo={answer.optionTwo}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ) : (
-        <div className="unanswered">
-          {unanswered.map((answer) => (
-            <div key={answer.id}>
-              <QuestionListItem
-                author={answer.author}
-                id={answer.id}
-                optionOne={answer.optionOne}
-                optionTwo={answer.optionTwo}
-              />
-            </div>
-          ))}
-        </div>
+        <Redirect to="/login" />
       )}
     </div>
   );
