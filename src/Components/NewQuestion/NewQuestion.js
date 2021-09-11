@@ -22,8 +22,7 @@ const NewQuestion = () => {
         author: authedUserReducer,
       })
     );
-
-    history.push("/dashboard");
+    history.push("/");
     resetOptionOne();
     resetOptionTwo();
   };
