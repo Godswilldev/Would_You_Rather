@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import useInputState from "../../hooks/useInputState";
 import { handleAddQuestion } from "../../Redux/Actions/NewQuestion";
 
@@ -10,11 +11,9 @@ const NewQuestion = () => {
   const [optionOne, setOptionOne, resetOptionOne] = useInputState("");
   const [optionTwo, setOptionTwo, resetOptionTwo] = useInputState("");
   const dispatch = useDispatch();
-  const [addedQuestion, setAddedQuestion] = useState(false);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    setAddedQuestion(true);
     dispatch(
       handleAddQuestion({
         optionOneText: optionOne,
@@ -24,44 +23,51 @@ const NewQuestion = () => {
     );
     resetOptionOne();
     resetOptionTwo();
-    setAddedQuestion(false);
   };
 
   return (
     <div>
-      <h3>Create Question</h3>
-      <h3>Would You rather...</h3>
-      {addedQuestion && alert("Your question has been added ")}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="optionOne"
-          id="optionOne"
-          placeholder="Enter Option One"
-          value={optionOne}
-          onChange={setOptionOne}
-        />
+      {authedUserReducer ? (
+        <div>
+          <h3>Create Question</h3>
+          <h3>Would You rather...</h3>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="optionOne"
+              id="optionOne"
+              placeholder="Enter Option One"
+              value={optionOne}
+              onChange={setOptionOne}
+            />
 
-        <h3>OR</h3>
+            <h3>OR</h3>
 
-        <input
-          type="text"
-          name="optionTwo"
-          id="optionTwo"
-          placeholder="Enter Option Two"
-          value={optionTwo}
-          onChange={setOptionTwo}
-        />
+            <input
+              type="text"
+              name="optionTwo"
+              id="optionTwo"
+              placeholder="Enter Option Two"
+              value={optionTwo}
+              onChange={setOptionTwo}
+            />
 
-        <br />
+            <br />
 
-        <button
-          disabled={optionTwo.trim().length < 2 ?? optionOne.trim().length < 2}
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
+            <button
+              disabled={
+                optionTwo.trim().length < 2 ?? optionOne.trim().length < 2
+              }
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      ) : (
+        <Redirect to="/login" />
+      )}
     </div>
   );
 };

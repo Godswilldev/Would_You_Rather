@@ -11,9 +11,10 @@ const Nav = () => {
 
   return (
     <>
-      <Link to="/">Home</Link>
+      <Link to="/dashboard">Home</Link>
       <Link to="/new">New Question</Link>
       <Link to="/leaderboard">Leaderboard</Link>
+
       {authedUser && (
         <div style={{ display: "flex" }}>
           <h3>{username.name}</h3>

@@ -42,7 +42,6 @@ const Dashboard = () => {
 
           {showAnswered ? (
             <div className="answered">
-              <h2>Answered Questions go here</h2>
               {answered.map((answer) => (
                 <div key={answer.id}>
                   <QuestionListItem
