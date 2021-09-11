@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import useInputState from "../../hooks/useInputState";
@@ -11,7 +11,7 @@ const NewQuestion = () => {
   const [optionOne, setOptionOne, resetOptionOne] = useInputState("");
   const [optionTwo, setOptionTwo, resetOptionTwo] = useInputState("");
   const dispatch = useDispatch();
-  const history = useHistory();
+  const [addedQuestion, setAddedQuestion] = useState(false);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -22,7 +22,7 @@ const NewQuestion = () => {
         author: authedUserReducer,
       })
     );
-    history.push("/");
+    setAddedQuestion(true);
     resetOptionOne();
     resetOptionTwo();
   };
@@ -31,6 +31,7 @@ const NewQuestion = () => {
     <div>
       <h3>Create Question</h3>
       <h3>Would You rather...</h3>
+      {addedQuestion && alert("Your question has been added ")}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
