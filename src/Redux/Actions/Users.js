@@ -22,6 +22,5 @@ export const getInitialUsers = () => async (dispatch) => {
   }
 };
 
-export const handleAddQuestionToUser = (info) => async (dispatch) => {
-  dispatch(addQuestionToUser(info));
-};
+export const handleAddQuestionToUser = (question) => async (dispatch) =>
+  dispatch(addQuestionToUser(question));

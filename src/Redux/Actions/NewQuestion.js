@@ -1,4 +1,5 @@
 import { _saveQuestion } from "../../utils/_Data";
+import { handleAddQuestionToUser } from "./Users";
 
 export const NEW_QUESTION = "NEW_QUESTION";
 
@@ -8,18 +9,18 @@ export const addNewQuestion = (question) => ({
 });
 
 export const handleAddQuestion =
-  (optionOneText, optionTwoText) => async (dispatch, getState) => {
+  ({ optionOneText, optionTwoText, author }) =>
+  async (dispatch) => {
     try {
-      const { authedUserReducer } = getState();
-
-      const save = await _saveQuestion({
+      const savedQuestion = await _saveQuestion({
         optionOneText,
         optionTwoText,
-        author: authedUserReducer,
+        author,
       });
 
-      await dispatch(addNewQuestion(save));
+      dispatch(addNewQuestion(savedQuestion));
+      dispatch(handleAddQuestionToUser(savedQuestion));
     } catch (error) {
-      console.log(`Error from saveQuestion action ${error}`);
+      console.log(`Error from handleAddQuestion action ${error}`);
     }
   };
