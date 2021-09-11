@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import LeaderCard from "./LeaderCard/LeaderCard";
 
 const LeaderBoard = () => {
   const users = useSelector(({ usersReducer }) => usersReducer);
+  const authedUser = useSelector(({ authedUserReducer }) => authedUserReducer);
 
   return (
     <div>
-      {users &&
+      {authedUser ? (
         Object.values(users)
           .sort(
             (a, b) =>
@@ -27,7 +29,10 @@ const LeaderBoard = () => {
                 }
               />
             </div>
-          ))}
+          ))
+      ) : (
+        <Redirect to="/login" />
+      )}
     </div>
   );
 };
