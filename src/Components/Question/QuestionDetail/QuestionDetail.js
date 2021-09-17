@@ -1,9 +1,10 @@
 import React from "react";
 
-const QuestionDetail = () => {
+const QuestionDetail = (props) => {
+  const { id } = props.match.params;
   return (
     <div>
-      <h3>Question detail page</h3>
+      <h3>Question detail page {id} </h3>
     </div>
   );
 };

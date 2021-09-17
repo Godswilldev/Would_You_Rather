@@ -9,6 +9,7 @@ import Question from "./Question/Question";
 import { Route, Switch } from "react-router";
 import { useDispatch } from "react-redux";
 import { handleInitialData } from "../Redux/Shared/Shared";
+import QuestionDetail from "./Question/QuestionDetail/QuestionDetail";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const App = () => {
         <Route exact path="/leaderboard" component={LeaderBoard} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/question/:unqId" component={Question} />
+        <Route exact path="/result/:id" component={QuestionDetail} />
         <Route component={Four0Four} />
       </Switch>
     </>

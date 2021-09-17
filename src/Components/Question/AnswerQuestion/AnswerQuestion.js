@@ -1,17 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import useInputState from "../../../hooks/useInputState";
 import { handleAnswerQuestion } from "../../../Redux/Actions/AnswerQuestion";
 
 const AnswerQuestion = ({ questionDetails, authorDetails, qid }) => {
   const authedUser = useSelector(({ authedUserReducer }) => authedUserReducer);
   const [answer, setAnswer] = useInputState("");
-
+  const history = useHistory();
   const dispatch = useDispatch();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(handleAnswerQuestion(authedUser, qid, answer));
+    history.push(`/result/${qid}`);
   };
 
   return (
