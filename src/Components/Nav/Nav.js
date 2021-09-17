@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { removeUser } from "../../Redux/Actions/AuthedUser";
 
+const Links = styled.div`
+  a {
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+`;
+
 const Nav = () => {
   const dispatch = useDispatch();
   const authedUser = useSelector(({ authedUserReducer }) => authedUserReducer);
   const users = useSelector(({ usersReducer }) => usersReducer);
   const username = Object.values(users).find((user) => user.id === authedUser);
-
-  const Links = styled.div`
-    a {
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-  `;
 
   return (
     <Links

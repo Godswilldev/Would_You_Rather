@@ -1,5 +1,6 @@
 import { GET_QUESTIONS } from "../Actions/Questions";
 import { NEW_QUESTION } from "../Actions/NewQuestion";
+import { ANSWER_QUESTION } from "../Actions/AnswerQuestion";
 
 const initialState = {};
 
@@ -11,19 +12,19 @@ const questionsReducer = (state = initialState, action) => {
     case NEW_QUESTION:
       return { ...state, [action.question.id]: action.question };
 
-    // case ANSWER_QUESTION:
-    //   return {
-    //     ...state,
-    //     [action.qid]: {
-    //       ...state[action.qid],
-    //       [action.answer]: {
-    //         ...state[action.qid][action.answer],
-    //         votes: state[action.qid][action.answer].votes.concat([
-    //           action.authedUser,
-    //         ]),
-    //       },
-    //     },
-    //   };
+    case ANSWER_QUESTION:
+      return {
+        ...state,
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat([
+              action.authedUser,
+            ]),
+          },
+        },
+      };
 
     default:
       return state;

@@ -1,4 +1,8 @@
-import { GET_USERS, ADD_QUESTION_TO_USER } from "../Actions/Users";
+import {
+  GET_USERS,
+  ADD_QUESTION_TO_USER,
+  ADD_ANSWER_TO_USER,
+} from "../Actions/Users";
 
 const initialState = {};
 
@@ -18,17 +22,17 @@ const usersReducer = (state = initialState, action) => {
         },
       };
 
-    // case ADD_ANSWER_TO_USER:
-    //   return {
-    //     ...state,
-    //     [action.authedUser]: {
-    //       ...state[action.authedUser],
-    //       answers: {
-    //         ...state[action.authedUser].answers,
-    //         [action.qid]: action.answer,
-    //       },
-    //     },
-    //   };
+    case ADD_ANSWER_TO_USER:
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          answers: {
+            ...state[action.authedUser].answers,
+            [action.qid]: action.answer,
+          },
+        },
+      };
 
     default:
       return state;
