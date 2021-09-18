@@ -52,8 +52,7 @@ const QuestionDetail = (props) => {
         ></progress>
         {optionOnePercentage}%
         <h3>
-          {optionOneVotes} out of {totalVotes}
-          votes
+          {optionOneVotes} out of {totalVotes} votes
         </h3>
       </div>
 
@@ -68,8 +67,7 @@ const QuestionDetail = (props) => {
         ></progress>
         {optionTwoPercentage}%
         <h3>
-          {optionTwoVotes} out of {totalVotes}
-          votes
+          {optionTwoVotes} out of {totalVotes} votes
         </h3>
       </div>
     </div>
