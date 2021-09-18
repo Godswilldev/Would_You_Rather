@@ -49,6 +49,7 @@ const Dashboard = () => {
                     id={answer.id}
                     optionOne={answer.optionOne}
                     optionTwo={answer.optionTwo}
+                    route={`/result/${answer.id}`}
                   />
                 </div>
               ))}
@@ -62,6 +63,7 @@ const Dashboard = () => {
                     id={answer.id}
                     optionOne={answer.optionOne}
                     optionTwo={answer.optionTwo}
+                    route={`/question/${answer.id}`}
                   />
                 </div>
               ))}

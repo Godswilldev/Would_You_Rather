@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion";
-// import QuestionDetail from "./QuestionDetail/QuestionDetail";
 
 const Question = (props) => {
   const authedUserReducer = useSelector(
@@ -23,19 +22,11 @@ const Question = (props) => {
     );
 
   return (
-    <div>
-      <AnswerQuestion
-        questionDetails={questionDetails}
-        authorDetails={authorDetails}
-        qid={questionId}
-      />
-
-      {/* <QuestionDetail
-        questionDetails={questionDetails}
-        authorDetails={authorDetails}
-        qid={questionId}
-      /> */}
-    </div>
+    <AnswerQuestion
+      questionDetails={questionDetails}
+      authorDetails={authorDetails}
+      qid={questionId}
+    />
   );
 };
 

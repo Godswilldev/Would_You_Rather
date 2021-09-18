@@ -2,7 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const QuestionDetail = (props) => {
-  const { id } = props.match.params;
+  const id = props?.match?.params?.id;
+  const qid = props?.qid;
+
+  const uId = id || qid;
 
   const authedUserReducer = useSelector(
     ({ authedUserReducer }) => authedUserReducer
@@ -13,7 +16,7 @@ const QuestionDetail = (props) => {
 
   const questionDetails =
     authedUserReducer &&
-    Object.values(questions).find((question) => question.id === id);
+    Object.values(questions).find((question) => question.id === uId);
 
   const authorDetails =
     authedUserReducer &&
