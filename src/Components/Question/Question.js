@@ -29,7 +29,12 @@ const Question = (props) => {
         authorDetails={authorDetails}
         qid={questionId}
       />
-      {/* <QuestionDetail /> */}
+
+      {/* <QuestionDetail
+        questionDetails={questionDetails}
+        authorDetails={authorDetails}
+        qid={questionId}
+      /> */}
     </div>
   );
 };
