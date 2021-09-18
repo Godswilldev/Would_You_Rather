@@ -28,7 +28,7 @@ const Nav = () => {
       }}
     >
       <Link to="/dashboard">Home</Link>
-      <Link to="/new">New Question</Link>
+      <Link to="/add">New Question</Link>
       <Link to="/leaderboard">Leaderboard</Link>
       {authedUser && (
         <div
