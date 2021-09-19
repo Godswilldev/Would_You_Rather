@@ -9,11 +9,11 @@ const Question = (props) => {
 
   const usersReducer = useSelector(({ usersReducer }) => usersReducer);
   const questions = useSelector(({ questionsReducer }) => questionsReducer);
-  const questionId = props.match.params.unqId;
+  const { question_id } = props?.match?.params;
 
   const questionDetails =
     authedUserReducer &&
-    Object.values(questions).find((question) => question.id === questionId);
+    Object.values(questions).find((question) => question.id === question_id);
 
   const authorDetails =
     authedUserReducer &&
@@ -25,7 +25,7 @@ const Question = (props) => {
     <AnswerQuestion
       questionDetails={questionDetails}
       authorDetails={authorDetails}
-      qid={questionId}
+      qid={question_id}
     />
   );
 };

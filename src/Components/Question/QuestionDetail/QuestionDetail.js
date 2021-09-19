@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const QuestionDetail = (props) => {
-  const id = props?.match?.params?.id;
-  const qid = props?.qid;
+  const id = props?.match?.params?.question_id;
 
-  const uId = id || qid;
+  const question_id = props?.question_id;
+
+  const uId = id || question_id;
 
   const authedUserReducer = useSelector(
     ({ authedUserReducer }) => authedUserReducer
@@ -35,16 +36,24 @@ const QuestionDetail = (props) => {
   const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100;
 
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: "25rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+        flexDirection: "column",
+      }}
+    >
       <h3>{authorDetails.name} asks</h3>
       <h4>Results</h4>
       <img
-        style={{ width: "100%", height: "12rem", borderRadius: "100%" }}
+        style={{ width: "12rem", height: "12rem", borderRadius: "100%" }}
         src={authorDetails.avatarURL}
         alt={`${authorDetails.name} img`}
       />
 
-      <div style={{ backgroundColor: "gray" }}>
+      <div style={{ backgroundColor: "#cadbfb" }}>
         {questionDetails.optionOne.votes.includes(authedUserReducer) &&
           "Your Vote"}
         <h2>Would you rather {questionDetails.optionOne.text}</h2>

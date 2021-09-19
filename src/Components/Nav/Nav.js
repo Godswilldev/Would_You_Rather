@@ -27,7 +27,7 @@ const Nav = () => {
         height: "3rem",
       }}
     >
-      <Link to="/dashboard">Home</Link>
+      <Link to="/">Home</Link>
       <Link to="/add">New Question</Link>
       <Link to="/leaderboard">Leaderboard</Link>
       {authedUser && (
@@ -42,6 +42,7 @@ const Nav = () => {
             src={username.avatarURL}
             alt={username.name}
           />
+
           <h5>{username.name}</h5>
           <Link to="/login">
             <button onClick={() => dispatch(removeUser())}>Logout</button>

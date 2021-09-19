@@ -22,13 +22,12 @@ const App = () => {
     <>
       <Nav />
       <Switch>
-        <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/add" component={NewQuestion} />
         <Route exact path="/leaderboard" component={LeaderBoard} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/question/:unqId" component={Question} />
-        <Route exact path="/result/:id" component={QuestionDetail} />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/questions/:question_id" component={Question} />
+        <Route exact path="/result/:question_id" component={QuestionDetail} />
         <Route component={Four0Four} />
       </Switch>
     </>

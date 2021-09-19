@@ -13,7 +13,7 @@ const Login = () => {
     evt.preventDefault();
     if (authUser !== "") {
       dispatch(authedUser(authUser));
-      history.push("/dashboard");
+      history.push("/");
     }
   };
 

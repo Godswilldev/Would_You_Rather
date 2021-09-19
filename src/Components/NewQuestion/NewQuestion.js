@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import useInputState from "../../hooks/useInputState";
 import { handleAddQuestion } from "../../Redux/Actions/NewQuestion";
 
@@ -11,6 +11,7 @@ const NewQuestion = () => {
   const [optionOne, setOptionOne, resetOptionOne] = useInputState("");
   const [optionTwo, setOptionTwo, resetOptionTwo] = useInputState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -21,6 +22,7 @@ const NewQuestion = () => {
         author: authedUserReducer,
       })
     );
+    history.push("/");
     resetOptionOne();
     resetOptionTwo();
   };
