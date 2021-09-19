@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const QuestionDetail = (props) => {
   const id = props?.match?.params?.question_id;
@@ -35,7 +36,7 @@ const QuestionDetail = (props) => {
   const optionOnePercentage = (optionOneVotes / totalVotes) * 100;
   const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100;
 
-  return (
+  return authedUserReducer ? (
     <div
       style={{
         maxWidth: "25rem",
@@ -83,6 +84,8 @@ const QuestionDetail = (props) => {
         </h3>
       </div>
     </div>
+  ) : (
+    <Redirect to="/login" />
   );
 };
 

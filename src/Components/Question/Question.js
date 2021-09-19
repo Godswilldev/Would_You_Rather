@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion";
 
 const Question = (props) => {
@@ -21,12 +22,18 @@ const Question = (props) => {
       (author) => author.id === questionDetails.author
     );
 
-  return (
-    <AnswerQuestion
-      questionDetails={questionDetails}
-      authorDetails={authorDetails}
-      qid={question_id}
-    />
+  return authedUserReducer ? (
+    <div>
+      <AnswerQuestion
+        questionDetails={questionDetails}
+        authorDetails={authorDetails}
+        qid={question_id}
+      />
+    </div>
+  ) : (
+    <div>
+      <Redirect to="/login" />
+    </div>
   );
 };
 
