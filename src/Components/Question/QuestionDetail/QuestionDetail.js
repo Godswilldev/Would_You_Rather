@@ -62,7 +62,7 @@ const QuestionDetail = (props) => {
           value={optionOneVotes}
           max={totalVotes}
         ></progress>
-        {optionOnePercentage}%
+        {Math.round(optionOnePercentage)}%
         <h3>
           {optionOneVotes} out of {totalVotes} votes
         </h3>
@@ -77,7 +77,7 @@ const QuestionDetail = (props) => {
           value={optionTwoVotes}
           max={totalVotes}
         ></progress>
-        {optionTwoPercentage}%
+        {Math.round(optionTwoPercentage)}%
         <h3>
           {optionTwoVotes} out of {totalVotes} votes
         </h3>
