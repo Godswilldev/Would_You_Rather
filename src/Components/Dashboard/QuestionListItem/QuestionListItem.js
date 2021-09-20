@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const QuestionListItem = ({ author, optionOne, route }) => {
+const QuestionListItem = ({ author, optionOne, id }) => {
   const users = useSelector(({ usersReducer }) => usersReducer);
 
   const username = Object.values(users).find((user) => user.id === author);
@@ -24,7 +24,7 @@ const QuestionListItem = ({ author, optionOne, route }) => {
       />
       <h4>Would You rather ?</h4>
       <p>... {optionOne.text.slice(0, 10)} ...</p>
-      <Link to={route}>
+      <Link to={`/questions/${id}`}>
         <button>View pool</button>
       </Link>
     </div>

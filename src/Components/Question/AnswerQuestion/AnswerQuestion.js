@@ -15,7 +15,7 @@ const AnswerQuestion = ({ questionDetails, authorDetails, qid }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(handleAnswerQuestion(authedUser, qid, answer));
-    history.push(`/result/${qid}`);
+    history.push(`/questions/${qid}`);
   };
 
   return authedUser ? (

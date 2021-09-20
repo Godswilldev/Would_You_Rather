@@ -9,7 +9,8 @@ import Question from "./Question/Question";
 import { Route, Switch } from "react-router";
 import { useDispatch } from "react-redux";
 import { handleInitialData } from "../Redux/Shared/Shared";
-import QuestionDetail from "./Question/QuestionDetail/QuestionDetail";
+import PrivateRoute from "./Routes/PrivateRoute";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,18 +19,28 @@ const App = () => {
     dispatch(handleInitialData());
   }, [dispatch]);
 
+  const questions = useSelector(({ questionsReducer }) => questionsReducer);
+  const users = useSelector(({ usersReducer }) => usersReducer);
+
   return (
     <>
-      <Nav />
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/add" component={NewQuestion} />
-        <Route exact path="/leaderboard" component={LeaderBoard} />
-        <Route exact path="/" component={Dashboard} />
-        <Route exact path="/questions/:question_id" component={Question} />
-        <Route exact path="/result/:question_id" component={QuestionDetail} />
-        <Route component={Four0Four} />
-      </Switch>
+      {questions && users && (
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/add" component={NewQuestion} />
+            <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
+            <PrivateRoute
+              exact
+              path="/questions/:question_id"
+              component={Question}
+            />
+            <Route component={Four0Four} />
+          </Switch>
+        </div>
+      )}
     </>
   );
 };

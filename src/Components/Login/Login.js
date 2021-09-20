@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { authedUser } from "../../Redux/Actions/AuthedUser";
 
 const Login = () => {
+  const { state } = useLocation();
   const [authUser, setAuthUser] = useState("");
   const users = useSelector(({ usersReducer }) => usersReducer);
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Login = () => {
     evt.preventDefault();
     if (authUser !== "") {
       dispatch(authedUser(authUser));
-      history.push("/");
+      history.push(state?.from || "/");
     }
   };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-const QuestionDetail = (props) => {
+const Result = (props) => {
   const id = props?.match?.params?.question_id;
 
   const question_id = props?.question_id;
@@ -89,4 +89,4 @@ const QuestionDetail = (props) => {
   );
 };
 
-export default QuestionDetail;
+export default Result;
