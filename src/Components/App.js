@@ -28,16 +28,16 @@ const App = () => {
         <div>
           <Nav />
           <Switch>
+            <PrivateRoute exact path="/" component={Dashboard} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/add" component={NewQuestion} />
-            <PrivateRoute exact path="/" component={Dashboard} />
             <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
             <PrivateRoute
               exact
               path="/questions/:question_id"
               component={Question}
             />
-            <Route component={Four0Four} />
+            <PrivateRoute component={Four0Four} />
           </Switch>
         </div>
       )}

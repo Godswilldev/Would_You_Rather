@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { Redirect } from "react-router-dom";
 import useInputState from "../../../hooks/useInputState";
 import { handleAnswerQuestion } from "../../../Redux/Actions/AnswerQuestion";
 
@@ -18,7 +17,7 @@ const AnswerQuestion = ({ questionDetails, authorDetails, qid }) => {
     history.push(`/questions/${qid}`);
   };
 
-  return authedUser ? (
+  return (
     <div
       style={{
         backgroundColor: "#cafafa",
@@ -61,8 +60,6 @@ const AnswerQuestion = ({ questionDetails, authorDetails, qid }) => {
         <button type="submit">Submit</button>
       </form>
     </div>
-  ) : (
-    <Redirect to="/login" />
   );
 };
 

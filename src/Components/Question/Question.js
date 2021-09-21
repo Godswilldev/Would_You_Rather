@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion";
 import Result from "./Result/Result";
 
@@ -27,7 +26,7 @@ const Question = ({ ...rest }) => {
       (author) => author.id === questionDetails.author
     );
 
-  return authedUserReducer ? (
+  return (
     <div>
       {Object.keys(usersReducer[authedUserReducer].answers).includes(
         question_id
@@ -40,10 +39,6 @@ const Question = ({ ...rest }) => {
           qid={question_id}
         />
       )}
-    </div>
-  ) : (
-    <div>
-      <Redirect to="/login" />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import QuestionListItem from "./QuestionListItem/QuestionListItem";
 
 const Dashboard = () => {
@@ -29,47 +28,41 @@ const Dashboard = () => {
 
   return (
     <div style={{ margin: "3rem" }}>
-      {loggedInUser ? (
-        <div>
-          <div>
-            <button onClick={() => setShowAnswered(false)}>
-              Unanswered Questions
-            </button>
-            <button onClick={() => setShowAnswered(true)}>
-              Answered Questions
-            </button>
-          </div>
+      <div>
+        <button onClick={() => setShowAnswered(false)}>
+          Unanswered Questions
+        </button>
+        <button onClick={() => setShowAnswered(true)}>
+          Answered Questions
+        </button>
+      </div>
 
-          {showAnswered ? (
-            <div className="answered">
-              {answered.map((answer) => (
-                <div key={answer.id}>
-                  <QuestionListItem
-                    author={answer.author}
-                    id={answer.id}
-                    optionOne={answer.optionOne}
-                    optionTwo={answer.optionTwo}
-                  />
-                </div>
-              ))}
+      {showAnswered ? (
+        <div className="answered">
+          {answered.map((answer) => (
+            <div key={answer.id}>
+              <QuestionListItem
+                author={answer.author}
+                id={answer.id}
+                optionOne={answer.optionOne}
+                optionTwo={answer.optionTwo}
+              />
             </div>
-          ) : (
-            <div className="unanswered">
-              {unanswered.map((answer) => (
-                <div key={answer.id}>
-                  <QuestionListItem
-                    author={answer.author}
-                    id={answer.id}
-                    optionOne={answer.optionOne}
-                    optionTwo={answer.optionTwo}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          ))}
         </div>
       ) : (
-        <Redirect to="/login" />
+        <div className="unanswered">
+          {unanswered.map((answer) => (
+            <div key={answer.id}>
+              <QuestionListItem
+                author={answer.author}
+                id={answer.id}
+                optionOne={answer.optionOne}
+                optionTwo={answer.optionTwo}
+              />
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
