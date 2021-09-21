@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { handleInitialData } from "../Redux/Shared/Shared";
 import PrivateRoute from "./Routes/PrivateRoute";
 import { useSelector } from "react-redux";
+import NotFound from "./FourZeroFour/NotFound";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/add" component={NewQuestion} />
             <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
+            <PrivateRoute exact path="/notFound" component={NotFound} />
             <PrivateRoute
               exact
               path="/questions/:question_id"

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion";
 import Result from "./Result/Result";
 
@@ -22,22 +23,29 @@ const Question = ({ ...rest }) => {
     authedUserReducer &&
     usersReducer &&
     questions &&
+    questionDetails &&
     Object.values(usersReducer).find(
       (author) => author.id === questionDetails.author
     );
 
   return (
     <div>
-      {Object.keys(usersReducer[authedUserReducer].answers).includes(
-        question_id
-      ) ? (
-        <Result question_id={question_id} />
+      {questionDetails ? (
+        <div>
+          {Object.keys(usersReducer[authedUserReducer].answers).includes(
+            question_id
+          ) ? (
+            <Result question_id={question_id} />
+          ) : (
+            <AnswerQuestion
+              questionDetails={questionDetails}
+              authorDetails={authorDetails}
+              qid={question_id}
+            />
+          )}
+        </div>
       ) : (
-        <AnswerQuestion
-          questionDetails={questionDetails}
-          authorDetails={authorDetails}
-          qid={question_id}
-        />
+        <Redirect to="/notFound" />
       )}
     </div>
   );
