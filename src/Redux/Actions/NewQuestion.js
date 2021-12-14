@@ -10,16 +10,30 @@ export const addNewQuestion = (question) => ({
 
 export const handleAddQuestion =
   ({ optionOneText, optionTwoText, author }) =>
-  async (dispatch) => {
+  async (dispatch, getstate, { getFirebase, getFirestore }) => {
     try {
+      const fireStore = await getFirestore();
+      await fireStore.collection("questions").add({
+        optionOne: {
+          text: optionOneText,
+          votes: [],
+        },
+        optionTwo: {
+          text: optionTwoText,
+          votes: [],
+        },
+        author,
+        timestamp: Date.now(),
+        id: 123,
+      });
       const savedQuestion = await _saveQuestion({
         optionOneText,
         optionTwoText,
         author,
       });
 
-      dispatch(addNewQuestion(savedQuestion));
-      dispatch(handleAddQuestionToUser(savedQuestion));
+      await dispatch(addNewQuestion(savedQuestion));
+      await dispatch(handleAddQuestionToUser(savedQuestion));
     } catch (error) {
       console.log(`Error from handleAddQuestion action ${error}`);
     }
